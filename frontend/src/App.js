@@ -1,7 +1,8 @@
 import './App.css';
-import Home from './components/home/Home'
-import Contact from './components/contact/Contact'
+import Home from './Components/home/Home'
+import Contact from './Components/contact/Contact'
 import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom'
+import { Login } from './Components/login/Login';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
           </Route>
           <Route exact path ='/contact'>
             <Contact/>
+          </Route>
+          <Route exact path ='/admin'>
+            <Login/>
           </Route>
         </Switch>
       </BrowserRouter>
