@@ -1,0 +1,11 @@
+.gallery_img{
+  display: flex;
+  justify-content: space-around;
+   align-items: center;
+}
+.gallery h1{
+	text-align: center;
+}
+.gallery{
+	padding: 80px 80px 80px 80px;
+}
