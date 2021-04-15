@@ -1,8 +1,8 @@
 import './App.css';
-import Home from './Components/home/Home'
-import Contact from './Components/contact/Contact'
+import Home from './components/home/Home'
+import Contact from './components/contact/Contact'
 import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom'
-import { Login } from './Components/login/Login';
+import { Login } from './components/login/Login';
 
 function App() {
   return (
