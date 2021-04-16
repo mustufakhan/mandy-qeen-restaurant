@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require ('cors')
+const bodyParser = require("body-parser")
 const mongoose  = require('mongoose')
 const {MONGOURI} = require('./config/keys')
+app.use(bodyParser.json())
+app.use(cors())
 
 mongoose.connect(MONGOURI,{
 	useNewUrlParser:true,
@@ -14,6 +18,10 @@ mongoose.connection.on('error',(err)=>{
 	console.log("err connecting",err)
 })
 
-app.listen(4000,()=>{
+require('./model/user')
+app.use(express.json())
+app.use(require('./routes/auth'))
+
+app.listen(5000,()=>{
 	console.log('server running')
 })
