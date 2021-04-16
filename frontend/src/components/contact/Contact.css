@@ -1,18 +1,24 @@
 .formbox {
-	text-align: center;
-	background-color: #efefef;
   margin: 50px;
-  padding: 20px;
+  padding: 0 99px 35px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+  background-color: #e6ecec;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .frominput{
 	position: relative;
-  width:40%;
+  width:100%;
   border:none;
   border: 1px solid gray;
   border-radius:5px;
   padding: 10px 20px;
   font-size:22px;
   color:gray;
+  height: 100px;
 }
 .submitbutton{
   background-color: #2b8548;

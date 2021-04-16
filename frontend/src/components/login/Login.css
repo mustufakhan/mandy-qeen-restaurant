@@ -1,0 +1,10 @@
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formbox1 {
+  padding: 0 99px 35px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+  background-color: #e6ecec;
+}

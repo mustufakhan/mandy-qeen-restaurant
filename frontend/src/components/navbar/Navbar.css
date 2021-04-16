@@ -1,17 +1,20 @@
 .navbar h1{
-	font-family: 'Averia Serif Libre', cursive;
-	font-size: 75px;
-	color: #2b8548;
-	text-align: center
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 75px;
+  color: #2b8548;
+  text-align: center
 }
 .links ul{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
 }
 
 .links li{
-	margin: 10px;
-	cursor: pointer;
+  margin: 10px;
+  cursor: pointer;
+}
+.links a{
+  color:grey;
 }

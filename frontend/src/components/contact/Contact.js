@@ -38,40 +38,43 @@ const Contact = () => {
   return (
     <div>
       <Navbar />
-      <div className="formbox">
-        <form onSubmit={(e)=>handleSubmit(e)}>
-          <p>Enter your name:</p>
-          <input
-            type="text"
-            className="frominput"
-            value={name}
-            onChange={(e)=>{setName(e.target.value)}}
-          />
-          <p>Enter your Email:</p>
-          <input
-            type="text"
-            className="frominput"
-            value={email}
-            onChange={(e)=>{setEmail(e.target.value)}}
-          />
-          <p>Title:</p>
-          <input
-            type="text"
-            className="frominput"
-            value={title}
-            onChange={(e)=>{setTitle(e.target.value)}}
-          />
-          <p>Description:</p>
-          <textarea
-            className="frominput"
-            value={description}
-            onChange={(e)=>{setDescription(e.target.value)}}
-          /><br/><br/>
-          <input
-            type='submit'
-            className="submitbutton"
-          />
-        </form>
+      <div className="box">
+        <div className="formbox">
+          <h1>Contact us</h1>
+          <form onSubmit={(e)=>handleSubmit(e)}>
+            <p>Enter your name:</p>
+            <input
+              type="text"
+              className="frominput"
+              value={name}
+              onChange={(e)=>{setName(e.target.value)}}
+            />
+            <p>Enter your Email:</p>
+            <input
+              type="text"
+              className="frominput"
+              value={email}
+              onChange={(e)=>{setEmail(e.target.value)}}
+            />
+            <p>Title:</p>
+            <input
+              type="text"
+              className="frominput"
+              value={title}
+              onChange={(e)=>{setTitle(e.target.value)}}
+            />
+            <p>Description:</p>
+            <textarea
+              className="frominput"
+              value={description}
+              onChange={(e)=>{setDescription(e.target.value)}}
+            /><br/><br/>
+            <input
+              type='submit'
+              className="submitbutton"
+            />
+          </form>
+        </div>
       </div>
     </div>
   )

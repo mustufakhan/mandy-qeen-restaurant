@@ -2,6 +2,7 @@ import React,{useState, } from 'react'
 import Navbar from '../navbar/Navbar'
 import M from 'materialize-css'
 import {useHistory} from 'react-router-dom'
+import './Login.css'
 
 export const Login = () => {
   const history = useHistory()
@@ -36,28 +37,30 @@ export const Login = () => {
   return (
     <div>
       <Navbar />
-      <div className="formbox">
-        <h1>Login</h1>
-        <form onSubmit={(e)=>onsubmit(e)}>
-          <p>Enter your Email:</p>
-          <input
-            type="text"
-            className="frominput"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-          />
-          <p>Password:</p>
-          <input
-            type="password"
-            className="frominput"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-          /><br/><br/>
-          <input
-            type='submit'
-            className="submitbutton"
-          />
-        </form>
+      <div className="box">
+        <div className="formbox1">
+          <h1>Login</h1>
+          <form onSubmit={(e)=>onsubmit(e)}>
+            <p>Enter your Email:</p>
+            <input
+              type="text"
+              className="frominput"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
+            />
+            <p>Password:</p>
+            <input
+              type="password"
+              className="frominput"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
+            /><br/><br/>
+            <input
+              type='submit'
+              className="submitbutton"
+            />
+          </form>
+        </div>
       </div>
     </div>
   )
