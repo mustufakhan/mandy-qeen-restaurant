@@ -1,7 +1,8 @@
 .gallery_img{
   display: flex;
   justify-content: space-around;
-   align-items: center;
+  align-items: center;
+  cursor: pointer;
 }
 .gallery h1{
 	text-align: center;

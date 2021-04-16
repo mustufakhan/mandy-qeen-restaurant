@@ -3,7 +3,6 @@ import Navbar from '../navbar/Navbar'
 import M from 'materialize-css'
 import {useHistory} from 'react-router-dom'
 
-
 export const Login = () => {
   const history = useHistory()
   const [email, setEmail] =useState('')

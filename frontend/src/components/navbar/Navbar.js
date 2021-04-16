@@ -39,7 +39,7 @@ const Navbar = () => {
               <NavLink  to="/contact">Contact</NavLink>
             </li>
             <li>
-              <a onClick={(e) => handlenav(e, 1600, "press")}>Press</a>
+              <a onClick={(e) => handlenav(e, 1800, "press")}>Press</a>
             </li>
             <li>
               <a href="#order">Order Online</a>

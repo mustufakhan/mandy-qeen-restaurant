@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react'
 import './App.css';
-import Home from './components/home/Home'
-import Contact from './components/contact/Contact'
-import Menu from './components/menu/Menu'
-import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom'
-import { Login } from './components/login/Login';
-import { Product } from './components/products/Product';
+import Home from '../components/home/Home'
+import Contact from '../components/contact/Contact'
+import Menu from '../components/menu/Menu'
+import {BrowserRouter, Route, Switch, useHistory, Redirect} from 'react-router-dom'
+import { Login } from '../components/login/Login';
+import { Product } from '../components/products/Product';
+import PrivateRoutes from './PrivateRoutes'
 
 function App() {
   return (
@@ -33,9 +34,7 @@ function App() {
           <Route exact path ='/menu'>
             <Menu/>
           </Route>
-          <Route exact path ='/products'>
-            <Product/>
-          </Route>
+          <PrivateRoutes path="/products" component={Product} />
         </Switch>
       </BrowserRouter>
     </div>
