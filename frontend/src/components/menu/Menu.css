@@ -1,0 +1,10 @@
+.menu {
+  text-align: center;
+  font-size: 30px;
+  font-family: inherit;
+  font-weight: 500;
+}
+.menucontent {
+	display: flex;
+  margin: 26px;
+}
