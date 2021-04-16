@@ -14,7 +14,7 @@ export const Login = () => {
         M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
         return
     }
-    fetch("http://localhost:5000/signin",{
+    fetch(`${process.env.REACT_APP_URL}/signin`,{
       method:"post",
       headers:{
         "Content-Type":"application/json"
@@ -34,6 +34,7 @@ export const Login = () => {
       }
     })
   }
+
   return (
     <div>
       <Navbar />

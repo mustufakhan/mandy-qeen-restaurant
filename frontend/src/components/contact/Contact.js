@@ -15,7 +15,7 @@ const Contact = () => {
       M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
       return
     }
-    fetch('http://localhost:5000/contact-us',{
+    fetch(`${process.env.REACT_APP_URL}/contact-us`,{
       method:"post",
       headers:{
         "Content-Type":"application/json"
