@@ -1,8 +1,15 @@
 import React from 'react'
 import './Menu.css'
 import Navbar from '../navbar/Navbar'
+import M from 'materialize-css'
 
- const Menu = () => {
+  const Menu = () => {
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.collapsible');
+      var instances = M.Collapsible.init(elems, true);
+  });
+
   return (
     <div className="">
       <Navbar />
@@ -14,17 +21,17 @@ import Navbar from '../navbar/Navbar'
           <div className="collapsible-body">
             <div className="menucontent">
               <div>
-                <h3>Shrimp paste fried rice</h3>
+                <h5>Shrimp paste fried rice</h5>
                 <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
               </div>
-              <div><h3>$15.95</h3></div>
+              <div><h5>$15.95</h5></div>
             </div>
             <div className="menucontent">
               <div>
-                <h3>Shrimp paste fried rice</h3>
+                <h5>Shrimp paste fried rice</h5>
                 <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
               </div>
-              <div><h3>$15.95</h3></div>
+              <div><h5>$15.95</h5></div>
             </div>
           </div>
         </li>
@@ -33,17 +40,17 @@ import Navbar from '../navbar/Navbar'
           <div className="collapsible-body">
             <div className="menucontent">
               <div>
-                <h3>Shrimp paste fried rice</h3>
+                <h5>Shrimp paste fried rice</h5>
                 <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
               </div>
-              <div><h3>$15.95</h3></div>
+              <div><h5>$15.95</h5></div>
             </div>
             <div className="menucontent">
               <div>
-                <h3>Shrimp paste fried rice</h3>
+                <h5>Shrimp paste fried rice</h5>
                 <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
               </div>
-              <div><h3>$15.95</h3></div>
+              <div><h5>$15.95</h5></div>
             </div>
           </div>
         </li>
@@ -52,17 +59,17 @@ import Navbar from '../navbar/Navbar'
           <div className="collapsible-body">
             <div className="menucontent">
               <div>
-                <h3>Shrimp paste fried rice</h3>
+                <h5>Shrimp paste fried rice</h5>
                 <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
               </div>
-              <div><h3>$15.95</h3></div>
+              <div><h5>$15.95</h5></div>
             </div>
             <div className="menucontent">
               <div>
-                <h3>Shrimp paste fried rice</h3>
+                <h5>Shrimp paste fried rice</h5>
                 <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
               </div>
-              <div><h3>$15.95</h3></div>
+              <div><h5>$15.95</h5></div>
             </div>
           </div>
         </li>
