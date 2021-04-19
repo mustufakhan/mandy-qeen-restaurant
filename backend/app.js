@@ -19,6 +19,7 @@ mongoose.connection.on('error',(err)=>{
 })
 
 require('./model/user')
+require('./model/category')
 app.use(express.json())
 app.use(require('./routes/auth'))
 
