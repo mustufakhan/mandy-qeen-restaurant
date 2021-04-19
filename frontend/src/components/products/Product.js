@@ -15,34 +15,36 @@ export const Product = () => {
   });
 
   useEffect(() => {
-   M.AutoInit();
+    M.AutoInit();
+    fetch(`${process.env.REACT_APP_URL}/all-category`,{
+      method:"get",
+      headers:{
+        "Content-Type":"application/json"
+      },
+    }).then(res=>res.json())
+    .then(result=>{
+      setOptions(result.category)
+    })
   }, []);
 
   const [categoryName, setCategoryName] =useState('')
   const [title, setTitle] =useState('')
   const [description, setDescription] =useState('')
   const [price, setPrice] =useState('')
-  const [Image, setImage] = useState([]);
+  const [Image, setImage] = useState(null);
   const [productShow, setProductShow] = useState(true);
   const [handleCategoryShow, setHandleCategoryShow] = useState(false);
   const [addCategoryName, setAddCategoryName] =useState("")
-  const [addCategoryNames, setAddCategoryNames] =useState([])
+  const [addCategoryNames, setAddCategoryNames] =useState('')
+  const [options, setOptions] =useState([])
 
   const handleCategoryChange = (e) => {
     setCategoryName(e.target.value)
   }
 
   const handleImageChange = (e) =>{
-    //setImage(e.target.files[0]);
-    if (e.target.files && e.target.files[0]){
-    const reader = new FileReader();
-    const objectURL = reader.readAsDataURL(e.target.files[0]);
-    //const objectURL=URL.createObjectURL(e.target.files[0]);
-    //setImage(pre=> [...pre,objectURL])
-      reader.onloadend = function (e) {
-        setImage(pre=> [...pre,reader.result])
-      }
-    }
+    const file= URL.createObjectURL(e.target.files[0])
+    setImage(file)
   }
   const handleProductAddShow = (e) => {
     setHandleCategoryShow(false)
@@ -55,13 +57,53 @@ export const Product = () => {
   const handleCategoryNameAdd = (e) =>{
     setAddCategoryName(e.target.value)
   }
+
   const handleCategoryNameAddSubmit = (e) =>{
     e.preventDefault();
-    setAddCategoryNames(prev=>[...prev,addCategoryName]);
-    setAddCategoryName("");
+    fetch(`${process.env.REACT_APP_URL}/category`,{
+      method:"post",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        name: addCategoryName
+      })
+    }).then(res=>res.json())
+    .then(result=>{
+      if(result.success){
+        M.toast({html: "Category successfully added", classes:"#4caf50 green"})
+        setAddCategoryName("");
+      }else{
+        M.toast({html: result.error, classes:"#4caf50 red"})
+      }
+    })
   }
-  console.log("fdsff",addCategoryNames)
-  return (
+
+  const addProducts = (e) =>{
+    e.preventDefault();
+    fetch(`${process.env.REACT_APP_URL}/add-product`,{
+      method:"post",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        price,
+        title,
+        description,
+        Image,
+      })
+    }).then(res=>res.json())
+    .then(result=>{
+      if(result.success){
+        M.toast({html: "Category successfully added", classes:"#4caf50 green"})
+        setAddCategoryName("");
+      }else{
+        M.toast({html: result.error, classes:"#4caf50 red"})
+      }
+    })
+  }
+  console.log(options)
+    return (
     <div>
       <button
         className="btn waves-effect waves-light"
@@ -73,22 +115,22 @@ export const Product = () => {
         Logout
       </button>
       <Navbar/>
-      <button class="btn waves-effect waves-light" onClick={handleProductAddShow}>Add Products</button>
-      <button class="btn waves-effect waves-light" onClick={handleCategoryAddShow}>Add Category</button>
+      <div style={{display:"flex",justifyContent:'center', margin:'10px'}}>
+        <button class="btn waves-effect waves-light" onClick={handleProductAddShow}>Add Products</button>
+        <button class="btn waves-effect waves-light" onClick={handleCategoryAddShow}>Add Category</button>
+      </div>
        { productShow && <div className="box">
         <div className="formbox1">
-          <form>
+          <form onSubmit={(e)=>addProducts(e)}>
             <h5>Add Product</h5>
             <label>
-            Choose Category:
-            <select value={categoryName} onChange={(e)=>setCategoryName(e.target.value)}>
-              <option value="" disabled selected>Choose Category</option>
-              <option value="Category1">Category1</option>
-              <option value="Category2">Category2</option>
-              <option value="Category3">Category3</option>
-              <option value="Category4">Category4</option>
-            </select>
+              Choose Category:
             </label>
+            <select value={categoryName} onChange={(e)=>setCategoryName(e.target.value)}>
+              <option value="select">Select</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+            </select>
             <p>Title:</p>
             <input
               type="text"

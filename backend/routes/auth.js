@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const User = mongoose.model("User")
+const Category = mongoose.model("Category")
+const Product = mongoose.model("Product")
 const router = express.Router()
 const nodemailer = require('nodemailer')
 const sendgridTransport = require('nodemailer-sendgrid-transport');
@@ -44,5 +46,53 @@ router.post('/contact-us',(req,res)=>{
   })
   res.json({message:"check your email", success: true})
 })
+
+router.post('/category',(req,res)=>{
+  const {name} = req.body
+  if(!name){
+    res.status(422).json({error:"This field cant be blank"})
+  }
+  Category.find({name})
+  .then((category)=>{
+    if(category){
+			res.status(422).json({error:"category already exits"})
+		}else{
+      const category = new Category({
+        name
+      })
+      category.save()
+      .then(category=>{
+        res.json({success: true})
+      })
+    }
+  })
+})
+
+router.get('/all-category',(req,res)=>{
+  Category.find({})
+  .then((category)=>{
+    console.log(category)
+    res.json({category:category})
+  })
+})
+
+router.post('/add-product',(req,res)=>{
+  const {price, image, title, description} = req.body
+  if(!price || !title || !description){
+    res.status(422).json({error:"please add all details"})
+  }else{
+    const product = new Product({
+      title,
+      description,
+      image,
+      price,
+    })
+    product.save()
+    .then(product=>{
+      res.json({success: true})
+    })
+  }
+})
+
 
 module.exports = router
