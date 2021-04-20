@@ -19,8 +19,8 @@ export const Product = () => {
   const [description, setDescription] =useState('')
   const [price, setPrice] =useState('')
   const [Image, setImage] = useState(null);
-  const [productShow, setProductShow] = useState(true);
-  const [handleCategoryShow, setHandleCategoryShow] = useState(false);
+  const [productShow, setProductShow] = useState(false);
+  const [handleCategoryShow, setHandleCategoryShow] = useState(true);
   const [addCategoryName, setAddCategoryName] =useState("")
   const [addCategoryNames, setAddCategoryNames] =useState('')
   const [options, setOptions] =useState([])
@@ -118,8 +118,8 @@ export const Product = () => {
       </button>
       <Navbar/>
       <div style={{display:"flex",justifyContent:'center', margin:'10px'}}>
-        <button class="btn waves-effect waves-light" onClick={handleProductAddShow}>Add Products</button>
         <button class="btn waves-effect waves-light" onClick={handleCategoryAddShow}>Add Category</button>
+        <button class="btn waves-effect waves-light" onClick={handleProductAddShow}>Add Products</button>
       </div>
        { productShow && <div className="box">
         <div className="formbox1">
