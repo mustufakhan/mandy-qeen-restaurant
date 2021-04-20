@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema({
     type:String,
     default:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"
    },
-  category_id:{
+  categoryId:{
     type:ObjectId,
     ref:"Category"
   },

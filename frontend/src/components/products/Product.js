@@ -14,6 +14,17 @@ export const Product = () => {
     var instances = M.Collapsible.init(elems, true);
   });
 
+  const [categoryName, setCategoryName] =useState('')
+  const [title, setTitle] =useState('')
+  const [description, setDescription] =useState('')
+  const [price, setPrice] =useState('')
+  const [Image, setImage] = useState(null);
+  const [productShow, setProductShow] = useState(true);
+  const [handleCategoryShow, setHandleCategoryShow] = useState(false);
+  const [addCategoryName, setAddCategoryName] =useState("")
+  const [addCategoryNames, setAddCategoryNames] =useState('')
+  const [options, setOptions] =useState([])
+
   useEffect(() => {
     M.AutoInit();
     fetch(`${process.env.REACT_APP_URL}/all-category`,{
@@ -25,18 +36,8 @@ export const Product = () => {
     .then(result=>{
       setOptions(result.category)
     })
-  }, []);
+  }, [ , productShow, handleCategoryShow]);
 
-  const [categoryName, setCategoryName] =useState('')
-  const [title, setTitle] =useState('')
-  const [description, setDescription] =useState('')
-  const [price, setPrice] =useState('')
-  const [Image, setImage] = useState(null);
-  const [productShow, setProductShow] = useState(true);
-  const [handleCategoryShow, setHandleCategoryShow] = useState(false);
-  const [addCategoryName, setAddCategoryName] =useState("")
-  const [addCategoryNames, setAddCategoryNames] =useState('')
-  const [options, setOptions] =useState([])
 
   const handleCategoryChange = (e) => {
     setCategoryName(e.target.value)
@@ -91,6 +92,7 @@ export const Product = () => {
         title,
         description,
         Image,
+        categoryName,
       })
     }).then(res=>res.json())
     .then(result=>{
@@ -104,7 +106,7 @@ export const Product = () => {
   }
   console.log(options)
     return (
-    <div>
+    <div> 
       <button
         className="btn waves-effect waves-light"
         type="submit"
@@ -127,9 +129,9 @@ export const Product = () => {
               Choose Category:
             </label>
             <select value={categoryName} onChange={(e)=>setCategoryName(e.target.value)}>
-              <option value="select">Select</option>
-              <option value="Java">Java</option>
-              <option value="C++">C++</option>
+              {options?.map(res=>{return (
+                <option value={res.name}>{res.name}</option>
+              )})}
             </select>
             <p>Title:</p>
             <input
