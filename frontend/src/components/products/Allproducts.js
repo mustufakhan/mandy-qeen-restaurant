@@ -35,6 +35,20 @@ export const Allproducts = () => {
   const handleBack = () =>{
     history.push('/products')
   }
+
+  const handleDelete = (e, id) =>{
+    e.preventDefault()
+    fetch(`${process.env.REACT_APP_URL}/delete/${id}`,{
+			method:"delete",
+    }).then(res=>res.json())
+    .then(result=>{
+      if(result.success){
+        setProducts(result.result)
+        M.toast({html: "Product deleted succesfully", classes:"#4caf50 green"})
+      }
+    })
+  }
+
   return (
     <div>
       <button
@@ -58,7 +72,7 @@ export const Allproducts = () => {
       <Navbar/>
       <h3>All Products</h3>
       <ul className="collapsible">{
-        category?.map((cat)=>{
+        category.length>0 && category?.map((cat)=>{
           return(
             <li>
               <div className="collapsible-header"><i className="material-icons">chevron_right</i> {cat.name}</div>
@@ -66,29 +80,27 @@ export const Allproducts = () => {
               <div className="collapsible-body">
                 <div className="menucontent">
                   <div>
-                    {products?.map((pro)=>{
+                    {products.length>0 && products?.map((pro)=>{
                       if(pro.categoryId === cat._id){
                         return(
                           <>
-                          <div style={{display:"flex"}}>
-                            <div>
-                              <h5>{pro.title}</h5>
-                              <p>{pro.description}</p>
-                            </div>
-                            <div style={{position: "absolute", right: "0"}}>
-                            <h5>${pro.price}</h5>
-                            <div>
-                            <button class="btn waves-effect waves-light">update<i class="material-icons">update</i></button>
-                            <button class="btn waves-effect waves-light">delete<i class="material-icons">delete</i></button>
-                            </div>
-                            </div>
+                            <div style={{display:"flex"}}>
+                              <div>
+                                <h5>{pro.title}</h5>
+                                <p>{pro.description}</p>
+                              </div>
+                              <div style={{position: "absolute", right: "30px"}}>
+                                <h5>${pro.price}</h5>
+                                <div style={{ display:"flex", position:'absolute',right: "0px"}}>
+                                  <button class="btn waves-effect waves-light">Edit<i class="material-icons">edit</i></button>
+                                  <button class="btn waves-effect waves-light" onClick={(e)=>handleDelete(e,pro._id)}>delete<i class="material-icons">delete</i></button>
+                                </div>
+                              </div>
                             </div>
                           </>
                         )
                       }else{
-                        return(
-                          <p>No product</p>
-                        )
+                        return null
                       }
                     })}
                   </div>

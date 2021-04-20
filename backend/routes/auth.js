@@ -106,4 +106,16 @@ router.get('/all-products',(req,res)=>{
   })
 })
 
+router.delete('/delete/:id',(req,res)=>{
+  Product.findOne({_id: req.params.id})
+  .then(pro=>{
+    pro.remove()
+    .then(result=>{
+      res.json({success: true, result:result})
+    }).catch(err=>{
+      console.log(err)
+    })
+  })
+})
+
 module.exports = router
