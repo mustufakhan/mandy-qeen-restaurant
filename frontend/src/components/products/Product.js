@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../navbar/Navbar'
 import {useHistory} from 'react-router-dom'
 import M from 'materialize-css'
+import Allproducts from './Allproducts'
 
 export const Product = () => {
   const history = useHistory()
@@ -24,6 +25,7 @@ export const Product = () => {
   const [addCategoryName, setAddCategoryName] =useState("")
   const [addCategoryNames, setAddCategoryNames] =useState('')
   const [options, setOptions] =useState([])
+  const [showAllPrducts, setShowAllPrducts] =useState(false)
 
   useEffect(() => {
     M.AutoInit();
@@ -57,6 +59,13 @@ export const Product = () => {
   }
   const handleCategoryNameAdd = (e) =>{
     setAddCategoryName(e.target.value)
+  }
+
+  const handleAllProducts = () =>{
+   setShowAllPrducts(true)
+   setHandleCategoryShow(false)
+   setProductShow(false)
+
   }
 
   const handleCategoryNameAddSubmit = (e) =>{
@@ -104,8 +113,8 @@ export const Product = () => {
       }
     })
   }
-  console.log(options)
-    return (
+
+  return (
     <div> 
       <button
         className="btn waves-effect waves-light"
@@ -120,6 +129,7 @@ export const Product = () => {
       <div style={{display:"flex",justifyContent:'center', margin:'10px'}}>
         <button class="btn waves-effect waves-light" onClick={handleCategoryAddShow}>Add Category</button>
         <button class="btn waves-effect waves-light" onClick={handleProductAddShow}>Add Products</button>
+        <button class="btn waves-effect waves-light" onClick={handleAllProducts}>All Products</button>
       </div>
        { productShow && <div className="box">
         <div className="formbox1">
@@ -181,6 +191,9 @@ export const Product = () => {
           </form>
         </div>
       </div> }
+      {
+         showAllPrducts && <Allproducts/>
+      }
     </div>
   )
 }

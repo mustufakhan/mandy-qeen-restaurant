@@ -96,5 +96,14 @@ router.post('/add-product',(req,res)=>{
   }
 })
 
+router.get('/all-products',(req,res)=>{
+  Product.find()
+  .then(product=>{
+    Category.find({})
+    .then(category=>{
+      res.json({products:product, category: category})
+    })
+  })
+})
 
 module.exports = router

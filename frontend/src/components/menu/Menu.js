@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, uses} from 'react'
 import './Menu.css'
 import Navbar from '../navbar/Navbar'
 import M from 'materialize-css'
@@ -8,6 +8,7 @@ const Menu = () => {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, true);
   });
+
   useEffect(() => {
    M.AutoInit();
   }, []);

@@ -6,7 +6,6 @@ import Menu from '../components/menu/Menu'
 import {BrowserRouter, Route, Switch, useHistory, Redirect} from 'react-router-dom'
 import { Login } from '../components/login/Login';
 import { Product } from '../components/products/Product';
-import { Allproducts } from '../components/products/Allproducts';
 import PrivateRoutes from './PrivateRoutes'
 
 function App() {
@@ -36,7 +35,6 @@ function App() {
             <Menu/>
           </Route>
           <PrivateRoutes path="/products" component={Product} />
-          <PrivateRoutes path="/all-products" component={Allproducts} />
         </Switch>
       </BrowserRouter>
     </div>
