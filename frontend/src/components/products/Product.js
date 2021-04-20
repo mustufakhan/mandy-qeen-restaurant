@@ -14,7 +14,7 @@ export const Product = () => {
     var instances = M.Collapsible.init(elems, true);
   });
 
-  const [categoryName, setCategoryName] =useState('')
+  const [categoryId, setCategoryId] =useState('')
   const [title, setTitle] =useState('')
   const [description, setDescription] =useState('')
   const [price, setPrice] =useState('')
@@ -39,9 +39,9 @@ export const Product = () => {
   }, [ , productShow, handleCategoryShow]);
 
 
-  const handleCategoryChange = (e) => {
-    setCategoryName(e.target.value)
-  }
+  // const handleCategoryChange = (e) => {
+  //   setCategoryName(e.target.value)
+  // }
 
   const handleImageChange = (e) =>{
     const file= URL.createObjectURL(e.target.files[0])
@@ -92,7 +92,7 @@ export const Product = () => {
         title,
         description,
         Image,
-        categoryName,
+        categoryId,
       })
     }).then(res=>res.json())
     .then(result=>{
@@ -128,9 +128,9 @@ export const Product = () => {
             <label>
               Choose Category:
             </label>
-            <select value={categoryName} onChange={(e)=>setCategoryName(e.target.value)}>
+            <select value={categoryId} onChange={(e)=>setCategoryId(e.target.value)}>
               {options?.map(res=>{return (
-                <option value={res.name}>{res.name}</option>
+                <option value={res._id}>{res.name}</option>
               )})}
             </select>
             <p>Title:</p>

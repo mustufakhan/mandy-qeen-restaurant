@@ -76,17 +76,17 @@ router.get('/all-category',(req,res)=>{
 })
 
 router.post('/add-product',(req,res)=>{
-  const {price, image, title, description, categoryName} = req.body
-  if(!price || !title || !description || !categoryName){
+  const {price, image, title, description, categoryId} = req.body
+  if(!price || !title || !description || !categoryId){
     res.status(422).json({error:"please add all details"})
   }else{
-    Category.find({name: categoryName}).then((category)=>{
+    Category.findById(categoryId).then((category)=>{
       const product = new Product({
         title,
         description,
         image,
         price,
-        categoryId: category._id ,
+        categoryId: category ,
       })
       product.save()
       .then(product=>{
