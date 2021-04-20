@@ -38,15 +38,21 @@ const Menu = () => {
                 <div className="menucontent">
                   <div>
                     {products?.map((pro)=>{
-                      return(
-                        <>
-                          <div>
-                            <h5>{pro.title}</h5>
-                            <p>{pro.description}</p>
-                          </div>
-                          <div><h5>${pro.price}</h5></div>
-                        </>
-                      )
+                      if(pro.categoryId === cat._id){
+                        return(
+                          <>
+                            <div>
+                              <h5>{pro.title}</h5>
+                              <p>{pro.description}</p>
+                            </div>
+                            <div><h5>${pro.price}</h5></div>
+                          </>
+                        )
+                      }else{
+                        return(
+                          <p>No product</p>
+                        )
+                      }
                     })}
                   </div>
                 </div>

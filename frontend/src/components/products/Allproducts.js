@@ -70,11 +70,19 @@ export const Allproducts = () => {
                       if(pro.categoryId === cat._id){
                         return(
                           <>
+                          <div style={{display:"flex"}}>
                             <div>
                               <h5>{pro.title}</h5>
                               <p>{pro.description}</p>
                             </div>
-                            <div><h5>${pro.price}</h5></div>
+                            <div style={{position: "absolute", right: "0"}}>
+                            <h5>${pro.price}</h5>
+                            <div>
+                            <button class="btn waves-effect waves-light">update<i class="material-icons">update</i></button>
+                            <button class="btn waves-effect waves-light">delete<i class="material-icons">delete</i></button>
+                            </div>
+                            </div>
+                            </div>
                           </>
                         )
                       }else{
