@@ -1,4 +1,4 @@
-import React, {useEffect, uses} from 'react'
+import React, {useEffect, useState} from 'react'
 import './Menu.css'
 import Navbar from '../navbar/Navbar'
 import M from 'materialize-css'
@@ -8,75 +8,54 @@ const Menu = () => {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, true);
   });
+  const [products, setProducts] =useState([])
+  const [category, setCategory] =useState([])
 
   useEffect(() => {
    M.AutoInit();
+   fetch(`${process.env.REACT_APP_URL}/all-products`,{
+    method:"get",
+    headers:{
+      "Content-Type":"application/json"
+    },
+  }).then(res=>res.json())
+  .then(result=>{
+    setProducts(result.products)
+    setCategory(result.category)
+  })
   }, []);
+
   return (
-    <div className="">
-      <Navbar />
-      <div>
-        <h2 className="menu">Menu</h2>
-        <ul className="collapsible">
-        <li>
-          <div className="collapsible-header"><i className="material-icons">chevron_right</i> Special of the day (no rice)</div>
-          <div className="collapsible-body">
-            <div className="menucontent">
-              <div>
-                <h5>Shrimp paste fried rice</h5>
-                <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
+    <div>
+      <Navbar/>
+      <h3>Menu</h3>
+      <ul className="collapsible">{
+        category?.map((cat)=>{
+          return(
+            <li>
+              <div className="collapsible-header"><i className="material-icons">chevron_right</i> {cat.name}</div>
+              <div className="collapsible-body">
+                <div className="menucontent">
+                  <div>
+                    {products?.map((pro)=>{
+                      return(
+                        <>
+                          <div>
+                            <h5>{pro.title}</h5>
+                            <p>{pro.description}</p>
+                          </div>
+                          <div><h5>${pro.price}</h5></div>
+                        </>
+                      )
+                    })}
+                  </div>
+                </div>
               </div>
-              <div><h5>$15.95</h5></div>
-            </div>
-            <div className="menucontent">
-              <div>
-                <h5>Shrimp paste fried rice</h5>
-                <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
-              </div>
-              <div><h5>$15.95</h5></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="collapsible-header"><i className="material-icons">chevron_right</i> Fillet fish (sole) or Whole Fish (Striped bass) (N</div>
-          <div className="collapsible-body">
-            <div className="menucontent">
-              <div>
-                <h5>Shrimp paste fried rice</h5>
-                <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
-              </div>
-              <div><h5>$15.95</h5></div>
-            </div>
-            <div className="menucontent">
-              <div>
-                <h5>Shrimp paste fried rice</h5>
-                <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
-              </div>
-              <div><h5>$15.95</h5></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div className="collapsible-header"><i className="material-icons">chevron_right</i> Fried Rice & Over Rice Plates</div>
-          <div className="collapsible-body">
-            <div className="menucontent">
-              <div>
-                <h5>Shrimp paste fried rice</h5>
-                <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
-              </div>
-              <div><h5>$15.95</h5></div>
-            </div>
-            <div className="menucontent">
-              <div>
-                <h5>Shrimp paste fried rice</h5>
-                <p>Streamed rice mixed shrimp paste served with sweetened pork belly,dri ed shrimps,s weetened sausages,omelettes,mangoes,shallots, greens string beans,cucumbers,chillies,fr ied shallots and piece of lime</p>
-              </div>
-              <div><h5>$15.95</h5></div>
-            </div>
-          </div>
-        </li>
-        </ul>
-      </div>
+            </li>
+          )
+        })
+      }
+      </ul>
     </div>
   )
 }
