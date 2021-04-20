@@ -15,25 +15,37 @@ export const Allproducts = () => {
 
   useEffect(() => {
    M.AutoInit();
-   fetch(`${process.env.REACT_APP_URL}/all-products`,{
-    method:"get",
-    headers:{
-      "Content-Type":"application/json"
-    },
-  }).then(res=>res.json())
-  .then(result=>{
-    setProducts(result.products)
-    setCategory(result.category)
-  })
+   fetchProducts()
   }, []);
-
-  const handleLogout = () =>{
+ 
+  const fetchProducts = () =>{
+    fetch(`${process.env.REACT_APP_URL}/all-products`,{
+      method:"get",
+      headers:{
+        "Content-Type":"application/json"
+      },
+    }).then(res=>res.json())
+    .then(result=>{
+      setProducts(result.products)
+      setCategory(result.category)
+    })
+  }
+   const handleLogout = () =>{
     localStorage.clear()
     history.push('/')
   }
 
   const handleBack = () =>{
     history.push('/products')
+  }
+
+  const handleEdit = (e, pro, cat) =>{
+    history.push({ 
+      pathname: '/edit-products',
+      state: pro,
+      cat: cat
+     });
+
   }
 
   const handleDelete = (e, id) =>{
@@ -43,7 +55,7 @@ export const Allproducts = () => {
     }).then(res=>res.json())
     .then(result=>{
       if(result.success){
-        setProducts(result.result)
+        fetchProducts()
         M.toast({html: "Product deleted succesfully", classes:"#4caf50 green"})
       }
     })
@@ -92,15 +104,13 @@ export const Allproducts = () => {
                               <div style={{position: "absolute", right: "30px"}}>
                                 <h5>${pro.price}</h5>
                                 <div style={{ display:"flex", position:'absolute',right: "0px"}}>
-                                  <button class="btn waves-effect waves-light">Edit<i class="material-icons">edit</i></button>
-                                  <button class="btn waves-effect waves-light" onClick={(e)=>handleDelete(e,pro._id)}>delete<i class="material-icons">delete</i></button>
+                                  <button class="btn waves-effect waves-light"  onClick={(e)=>handleEdit(e, pro,cat)}>Edit<i className="material-icons">edit</i></button>
+                                  <button class="btn waves-effect waves-light" onClick={(e)=>handleDelete(e,pro._id)}>delete<i className="material-icons">delete</i></button>
                                 </div>
                               </div>
                             </div>
                           </>
                         )
-                      }else{
-                        return null
                       }
                     })}
                   </div>

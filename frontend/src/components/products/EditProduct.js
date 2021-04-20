@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 import M from 'materialize-css'
 import Allproducts from './Allproducts'
 
-export const Product = () => {
+export const EditProduct = (props) => {
   const history = useHistory()
   const handleLogout = () =>{
     localStorage.clear()
@@ -14,16 +14,15 @@ export const Product = () => {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, true);
   });
+  const data = props?.history?.location?.state
 
-  const [categoryId, setCategoryId] =useState('')
-  const [disableCat, setdisableCat] =useState(false)
-  const [disablepro, setdisablepro] =useState(false)
-  const [title, setTitle] =useState('')
-  const [description, setDescription] =useState('')
-  const [price, setPrice] =useState('')
+  const [categoryId, setCategoryId] =useState(data.categoryId)
+  const [title, setTitle] =useState(data.title)
+  const [description, setDescription] =useState(data.description)
+  const [price, setPrice] =useState(data.price)
   const [Image, setImage] = useState(null);
-  const [productShow, setProductShow] = useState(false);
-  const [handleCategoryShow, setHandleCategoryShow] = useState(true);
+  const [productShow, setProductShow] = useState(true);
+  const [handleCategoryShow, setHandleCategoryShow] = useState(false);
   const [addCategoryName, setAddCategoryName] =useState("")
   const [addCategoryNames, setAddCategoryNames] =useState('')
   const [options, setOptions] =useState([])
@@ -42,10 +41,6 @@ export const Product = () => {
     })
   }, [ , productShow, handleCategoryShow]);
 
-  useEffect(() => {
-   setdisableCat(false)
-   setdisablepro(false)
-  }, [addCategoryName, title]);
 
   // const handleCategoryChange = (e) => {
   //   setCategoryName(e.target.value)
@@ -68,11 +63,14 @@ export const Product = () => {
   }
 
   const handleAllProducts = () =>{
-    history.push('/all-products')
+  //  setShowAllPrducts(true)
+  //  setHandleCategoryShow(false)
+  //  setProductShow(false)
+  history.push('/all-products')
+
   }
 
   const handleCategoryNameAddSubmit = (e) =>{
-    setdisableCat(true)
     e.preventDefault();
     fetch(`${process.env.REACT_APP_URL}/category`,{
       method:"post",
@@ -94,36 +92,30 @@ export const Product = () => {
   }
 
   const addProducts = (e) =>{
-    setdisablepro(true)
-    e.preventDefault();
-    fetch(`${process.env.REACT_APP_URL}/add-product`,{
-      method:"post",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify({
-        price,
-        title,
-        description,
-        Image,
-        categoryId,
-      })
-    }).then(res=>res.json())
-    .then(result=>{
-      if(result.success){
-        setPrice('')
-        setDescription('')
-        setCategoryId('')
-        setImage('')
-        setTitle('')
-        M.toast({html: "Category successfully added", classes:"#4caf50 green"})
-        setAddCategoryName("");
-      }else{
-        M.toast({html: result.error, classes:"#4caf50 red"})
-      }
-    })
+    // e.preventDefault();
+    // fetch(`${process.env.REACT_APP_URL}/add-product`,{
+    //   method:"post",
+    //   headers:{
+    //     "Content-Type":"application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     price,
+    //     title,
+    //     description,
+    //     Image,
+    //     categoryId,
+    //   })
+    // }).then(res=>res.json())
+    // .then(result=>{
+    //   if(result.success){
+    //     M.toast({html: "Category successfully added", classes:"#4caf50 green"})
+    //     setAddCategoryName("");
+    //   }else{
+    //     M.toast({html: result.error, classes:"#4caf50 red"})
+    //   }
+    // })
   }
-
+// debugger
   return (
     <div> 
       <button
@@ -182,7 +174,7 @@ export const Product = () => {
               onChange={handleImageChange}
             /><br/>
             <br/><br/><br/>
-            <input type="submit" value="Submit" disabled={disablepro}/>
+            <input type="submit" value="Submit" />
           </form>
         </div>
       </div> }
@@ -197,10 +189,13 @@ export const Product = () => {
               value={addCategoryName}
               onChange={handleCategoryNameAdd}
             /><br/><br/><br/>
-            <input type="submit" value="Submit" disabled={disableCat}/>
+            <input type="submit" value="Submit" />
           </form>
         </div>
       </div> }
+      {/* {
+         showAllPrducts && <Allproducts/>
+      } */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Navbar from '../navbar/Navbar'
 import './Contact.css'
 import M from 'materialize-css'
@@ -8,7 +8,11 @@ const Contact = () => {
   const [email, setEmail] =useState('')
   const [title, setTitle] =useState('')
   const [description, setDescription] =useState('')
+  const [disable, setDisable] =useState(false)
 
+  useEffect( ()=>{
+    setDisable(false)
+  },[name, title])
   const handleSubmit = (e) =>{
     e.preventDefault()
     if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
@@ -29,6 +33,11 @@ const Contact = () => {
     }).then(res=>res.json())
     .then(result=>{
       if(result.success){
+        setTitle('')
+        setName('')
+        setDescription('')
+        setEmail('')
+        setDisable(true)
         M.toast({html: result.message, classes:"#4caf50 green"})
       }else{
         M.toast({html: result.error, classes:"#4caf50 red"})
@@ -72,6 +81,7 @@ const Contact = () => {
             <input
               type='submit'
               className="submitbutton"
+              disabled={disable}
             />
           </form>
         </div>
