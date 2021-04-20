@@ -54,7 +54,7 @@ router.post('/category',(req,res)=>{
   }
   Category.find({name})
   .then((category)=>{
-    if(category){
+    if(category.length > 0){
 			res.status(422).json({error:"category already exits"})
 		}else{
       const category = new Category({
@@ -69,9 +69,8 @@ router.post('/category',(req,res)=>{
 })
 
 router.get('/all-category',(req,res)=>{
-  Category.find({})
+  Category.find()
   .then((category)=>{
-    console.log(category)
     res.json({category:category})
   })
 })

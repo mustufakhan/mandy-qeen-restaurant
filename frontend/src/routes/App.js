@@ -15,16 +15,16 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path ='/'>
-            <Home/>
+            <Home val={0}/>
           </Route>
           <Route exact path ='/hours'>
-            <Home/>
+            <Home val={1500}/>
           </Route>
           <Route exact path ='/press'>
-            <Home/>
+            <Home val={1800}/>
           </Route>
           <Route exact path ='/about'>
-            <Home/>
+            <Home val={850}/>
           </Route>
           <Route exact path ='/contact'>
             <Contact/>

@@ -7,15 +7,7 @@ const Navbar = () => {
   const aboutref = useRef(null);
 
   const handlenav = (e, val, urlname) =>{
-    if(window.location.href.includes("/contact") || window.location.href.includes("/menu") || window.location.href.includes("/admin") || window.location.href.includes("/products")){
-      history.push("/");
-      setTimeout(()=>window.scroll(0, val),50)
-      window.history.pushState('','',urlname)
-    }
-    else
-      window.scroll(0, val)
-      window.history.pushState('','',urlname)
-
+    history.push(`/${urlname}`);
   }
   return (
     <div className="main">
