@@ -62,9 +62,10 @@ export const Product = () => {
   }
 
   const handleAllProducts = () =>{
-   setShowAllPrducts(true)
-   setHandleCategoryShow(false)
-   setProductShow(false)
+  //  setShowAllPrducts(true)
+  //  setHandleCategoryShow(false)
+  //  setProductShow(false)
+  history.push('/all-products')
 
   }
 
@@ -191,9 +192,9 @@ export const Product = () => {
           </form>
         </div>
       </div> }
-      {
+      {/* {
          showAllPrducts && <Allproducts/>
-      }
+      } */}
     </div>
   )
 }

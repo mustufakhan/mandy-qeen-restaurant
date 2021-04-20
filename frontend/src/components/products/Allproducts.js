@@ -3,7 +3,7 @@ import Navbar from '../navbar/Navbar'
 import M from 'materialize-css'
 import {useHistory} from 'react-router-dom'
 
-const Allproducts = () => {
+export const Allproducts = () => {
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, true);
@@ -24,9 +24,10 @@ const Allproducts = () => {
     setCategory(result.category)
   })
   }, []);
-  console.log({products})
+
   return (
     <div>
+      <Navbar/>
       <h3>All Products</h3>
       <ul className="collapsible">{
         category?.map((cat)=>{
@@ -59,4 +60,3 @@ const Allproducts = () => {
     </div>
   )
 }
-export default Allproducts
