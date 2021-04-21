@@ -10,7 +10,7 @@ const Navbar = () => {
     history.push(`/${urlname}`);
   }
   return (
-    <div className="main">
+    <div className="main1">
       <div className="navbar">
         <h1>Mandyqueen Thai Restaurant</h1>
         <div className="links">
