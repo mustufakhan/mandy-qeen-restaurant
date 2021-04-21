@@ -181,7 +181,7 @@ export const Product = () => {
               onChange={handleImageChange}
             /><br/> */}
             <br/><br/><br/>
-            <input type="submit" value="Submit" disabled={disablepro}/>
+            <input type="submit" value="Submit" disabled={disablepro} style={{cursor:'pointer'}}/>
           </form>
         </div>
       </div> }
@@ -196,7 +196,7 @@ export const Product = () => {
               value={addCategoryName}
               onChange={handleCategoryNameAdd}
             /><br/><br/><br/>
-            <input type="submit" value="Submit" disabled={disableCat}/>
+            <input type="submit" value="Submit" disabled={disableCat} style={{cursor:'pointer'}}/>
           </form>
         </div>
       </div> }

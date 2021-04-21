@@ -82,6 +82,7 @@ const Contact = () => {
               type='submit'
               className="submitbutton"
               disabled={disable}
+              style={{cursor:'pointer'}}
             />
           </form>
         </div>

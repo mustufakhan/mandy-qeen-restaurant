@@ -174,7 +174,7 @@ export const EditProduct = (props) => {
               onChange={handleImageChange}
             /><br/>
             <br/><br/><br/>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" style={{cursor:'pointer'}}/>
           </form>
         </div>
       </div> }
