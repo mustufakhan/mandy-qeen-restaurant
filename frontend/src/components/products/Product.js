@@ -149,6 +149,7 @@ export const Product = () => {
               Choose Category:
             </label>
             <select value={categoryId} onChange={(e)=>setCategoryId(e.target.value)}>
+            <option value="" disabled selected>Choose your option</option>
               {options?.map(res=>{return (
                 <option value={res._id}>{res.name}</option>
               )})}

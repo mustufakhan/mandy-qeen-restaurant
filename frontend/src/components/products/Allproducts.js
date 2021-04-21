@@ -121,6 +121,9 @@ export const Allproducts = () => {
         })
       }
       </ul>
+      {
+        category.length == 0 && <h3 style={{color:'grey'}}>Loading....</h3>
+      }
     </div>
   )
 }
