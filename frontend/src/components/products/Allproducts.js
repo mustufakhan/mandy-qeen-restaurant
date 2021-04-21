@@ -81,14 +81,14 @@ export const Allproducts = () => {
         Back
       </button>
       <Navbar/>
-      <h3>All Products</h3>
+      <h3 className="menuheading">All Products</h3>
       <ul className="collapsible">{
         category.length>0 && category?.map((cat)=>{
           return(
             <li>
-              <div className="collapsible-header"><i className="material-icons">chevron_right</i> {cat.name}</div>
+              <div className="collapsible-header menucategory"><i className="material-icons">chevron_right</i> {cat.name}</div>
               
-              <div className="collapsible-body">
+              <div className="collapsible-body menubody">
                 <div className="menucontent">
                   <div>
                     {products.length>0 && products?.map((pro)=>{

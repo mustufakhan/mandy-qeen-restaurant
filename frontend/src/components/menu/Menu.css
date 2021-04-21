@@ -7,3 +7,15 @@
 .menucontent {
   display: flex;
 }
+.menuheading {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+}
+.menucategory {
+  color: black;
+  font-weight: bold;
+}
+.menubody {
+  color: black;
+}
