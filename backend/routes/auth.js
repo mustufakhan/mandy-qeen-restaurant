@@ -42,9 +42,10 @@ router.post('/contact-us',(req,res)=>{
     subject:"contact-us",
     html:`
     <p>${name} send you an email</p>
+    <p>${description}</p>
     `
   })
-  res.json({message:"check your email", success: true})
+  res.json({message:"Email successfully send", success: true})
 })
 
 router.post('/category',(req,res)=>{

@@ -40,7 +40,7 @@ export const Product = () => {
     .then(result=>{
       setOptions(result.category)
     })
-  }, [ , productShow, handleCategoryShow]);
+  }, [ , productShow, handleCategoryShow, disableCat]);
 
   useEffect(() => {
    setdisableCat(false)
@@ -117,7 +117,9 @@ export const Product = () => {
         setImage('')
         setTitle('')
         M.toast({html: "Category successfully added", classes:"#4caf50 green"})
+        history.push('/all-products')
         setAddCategoryName("");
+
       }else{
         M.toast({html: result.error, classes:"#4caf50 red"})
       }

@@ -40,14 +40,14 @@ const Menu = () => {
                     {products?.map((pro)=>{
                       if(pro.categoryId === cat._id){
                         return(
-                          <>
+                          <div  style={{display:"flex"}}>
                             <div>
-                            <img src={pro.image} height='100px'/>
+                            {/* <img src={pro.image} height='100px'/> */}
                               <h5>{pro.title}</h5>
                               <p>{pro.description}</p>
                             </div>
-                            <div><h5>${pro.price}</h5></div>
-                          </>
+                            <div style={{position: "absolute", right: "30px"}}><h5>${pro.price}</h5></div>
+                          </div>
                         )
                       }
                     })}
