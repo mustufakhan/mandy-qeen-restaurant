@@ -26,3 +26,6 @@
 .formbox {
 	text-align: center;
 }
+.main {
+	width: fit-content;
+}
