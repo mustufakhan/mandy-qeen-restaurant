@@ -77,7 +77,7 @@ router.get('/all-category',(req,res)=>{
 })
 
 router.post('/add-product',(req,res)=>{
-  const {price, image, title, description, categoryId} = req.body
+  const {price, title, description, categoryId} = req.body
   if(!price || !title || !description || !categoryId){
     res.status(422).json({error:"please add all details"})
   }else{
@@ -85,7 +85,7 @@ router.post('/add-product',(req,res)=>{
       const product = new Product({
         title,
         description,
-        image,
+        // image,
         price,
         categoryId: category ,
       })
@@ -120,8 +120,8 @@ router.delete('/delete/:id',(req,res)=>{
 })
 
 router.put('/update-product/:id',(req,res)=>{
-  const {price, image, title, description, categoryId} = req.body
-	Product.findByIdAndUpdate(req.params.id,{$set:{title, price, description, image}},{new:true},
+  const {price, title, description, categoryId} = req.body
+	Product.findByIdAndUpdate(req.params.id,{$set:{title, price, description}},{new:true},
 	(err,result)=>{
 		if(err){
 				return res.status(422).json({error:"pic canot post"})

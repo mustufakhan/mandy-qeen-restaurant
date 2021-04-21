@@ -166,13 +166,13 @@ export const EditProduct = (props) => {
               value={price}
               onChange={(e)=>setPrice(e.target.value)}
             />
-            <p>Product Image:</p>
+            {/* <p>Product Image:</p>
             <input
               className="testfile"
               accept="image/*"
               type="file"
               onChange={handleImageChange}
-            /><br/>
+            /><br/> */}
             <br/><br/><br/>
             <input type="submit" value="Submit" style={{cursor:'pointer'}}/>
           </form>

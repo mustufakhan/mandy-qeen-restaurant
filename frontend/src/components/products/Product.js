@@ -173,7 +173,7 @@ export const Product = () => {
               value={price}
               onChange={(e)=>setPrice(e.target.value)}
             />
-            <p>Product Image:</p>
+            {/* <p>Product Image:</p> */}
             {/* <input
               className="testfile"
               accept="image/*"
