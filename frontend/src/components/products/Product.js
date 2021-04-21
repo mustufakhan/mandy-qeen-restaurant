@@ -47,14 +47,10 @@ export const Product = () => {
    setdisablepro(false)
   }, [addCategoryName, title]);
 
-  // const handleCategoryChange = (e) => {
-  //   setCategoryName(e.target.value)
+  // const handleImageChange = (e) =>{
+  //   const file= URL.createObjectURL(e.target.files[0])
+  //   setImage(file)
   // }
-
-  const handleImageChange = (e) =>{
-    const file= URL.createObjectURL(e.target.files[0])
-    setImage(file)
-  }
   const handleProductAddShow = (e) => {
     setHandleCategoryShow(false)
     setProductShow(true)
@@ -105,7 +101,7 @@ export const Product = () => {
         price,
         title,
         description,
-        Image,
+        // Image,
         categoryId,
       })
     }).then(res=>res.json())
@@ -178,12 +174,12 @@ export const Product = () => {
               onChange={(e)=>setPrice(e.target.value)}
             />
             <p>Product Image:</p>
-            <input
+            {/* <input
               className="testfile"
               accept="image/*"
               type="file"
               onChange={handleImageChange}
-            /><br/>
+            /><br/> */}
             <br/><br/><br/>
             <input type="submit" value="Submit" disabled={disablepro}/>
           </form>

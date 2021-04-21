@@ -9,7 +9,11 @@ import Navbar from '../navbar/Navbar'
 
 const Home = (props) => {
   useEffect(() => {
-    window.scroll(0, props.val)
+    // window.scroll(0, props.val)
+    window.scrollTo({
+        top:props.val,
+        behavior: 'smooth'
+      });
   },[props.val]);
 
   return (

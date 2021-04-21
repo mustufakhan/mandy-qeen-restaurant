@@ -22,10 +22,10 @@ const Gallery = () => {
     <div className="gallery" id="gallery">
       <h1>Gallery</h1>
       <div className="gallery_img">
-        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/v1537532077/iStock-486723544_fmtdpp.jpg" onClick={(e) => handleImageClick(e,0)} height="120px" />
-        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/w_300,c_scale/v1537532081/iStock-902377778_l9tfhp.jpg" onClick={(e) => handleImageClick(e,1)} height="120px"/>  
-        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/w_300,c_scale/v1537532083/iStock-531705100_w1huaz.jpg" onClick={(e) => handleImageClick(e,2)} height="120px" /> 
-        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/w_300,c_scale/v1537532087/iStock-502384220_liq8mp.jpg" onClick={(e) => handleImageClick(e,3)} height="120px"/>
+        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/v1537532077/iStock-486723544_fmtdpp.jpg" onClick={(e) => handleImageClick(e,0)} height="150px" />
+        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/w_300,c_scale/v1537532081/iStock-902377778_l9tfhp.jpg" onClick={(e) => handleImageClick(e,1)} height="150px"/>  
+        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/w_300,c_scale/v1537532083/iStock-531705100_w1huaz.jpg" onClick={(e) => handleImageClick(e,2)} height="150px" /> 
+        <img src="https://res.cloudinary.com/simplemenu/image/upload/q_auto:low/w_300,c_scale/v1537532087/iStock-502384220_liq8mp.jpg" onClick={(e) => handleImageClick(e,3)} height="150px"/>
       </div>
 
       {isOpen && (
