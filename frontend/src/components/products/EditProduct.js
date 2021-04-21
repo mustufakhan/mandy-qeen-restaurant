@@ -108,7 +108,7 @@ export const EditProduct = (props) => {
     }).then(res=>res.json())
     .then(result=>{
       if(result.success){
-        M.toast({html: "Category successfully added", classes:"#4caf50 green"})
+        M.toast({html: "Category successfully updated", classes:"#4caf50 green"})
         setAddCategoryName("");
         history.push('/all-products')
       }else{
