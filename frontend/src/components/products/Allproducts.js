@@ -60,7 +60,7 @@ export const Allproducts = () => {
       }
     })
   }
-
+  
   return (
     <div>
       <button
@@ -98,6 +98,7 @@ export const Allproducts = () => {
                           <>
                             <div style={{display:"flex"}}>
                               <div>
+                                <img src={pro.image} height='100px'/>
                                 <h5>{pro.title}</h5>
                                 <p>{pro.description}</p>
                               </div>

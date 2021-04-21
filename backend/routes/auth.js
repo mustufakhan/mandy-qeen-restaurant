@@ -118,4 +118,15 @@ router.delete('/delete/:id',(req,res)=>{
   })
 })
 
+router.put('/update-product/:id',(req,res)=>{
+  const {price, image, title, description, categoryId} = req.body
+	Product.findByIdAndUpdate(req.params.id,{$set:{title, price, description, image}},{new:true},
+	(err,result)=>{
+		if(err){
+				return res.status(422).json({error:"pic canot post"})
+		}
+		res.json({result: result, success: true})
+	})
+})
+
 module.exports = router

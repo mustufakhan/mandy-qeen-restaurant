@@ -42,15 +42,12 @@ const Menu = () => {
                         return(
                           <>
                             <div>
+                            <img src={pro.image} height='100px'/>
                               <h5>{pro.title}</h5>
                               <p>{pro.description}</p>
                             </div>
                             <div><h5>${pro.price}</h5></div>
                           </>
-                        )
-                      }else{
-                        return(
-                          <p>No product</p>
                         )
                       }
                     })}

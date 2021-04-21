@@ -91,31 +91,32 @@ export const EditProduct = (props) => {
     })
   }
 
-  const addProducts = (e) =>{
-    // e.preventDefault();
-    // fetch(`${process.env.REACT_APP_URL}/add-product`,{
-    //   method:"post",
-    //   headers:{
-    //     "Content-Type":"application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     price,
-    //     title,
-    //     description,
-    //     Image,
-    //     categoryId,
-    //   })
-    // }).then(res=>res.json())
-    // .then(result=>{
-    //   if(result.success){
-    //     M.toast({html: "Category successfully added", classes:"#4caf50 green"})
-    //     setAddCategoryName("");
-    //   }else{
-    //     M.toast({html: result.error, classes:"#4caf50 red"})
-    //   }
-    // })
+  const editProduct = (e) =>{
+    e.preventDefault();
+    fetch(`${process.env.REACT_APP_URL}/update-product/${data._id}`,{
+      method:"put",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        price,
+        title,
+        description,
+        Image,
+        categoryId,
+      })
+    }).then(res=>res.json())
+    .then(result=>{
+      if(result.success){
+        M.toast({html: "Category successfully added", classes:"#4caf50 green"})
+        setAddCategoryName("");
+        history.push('/all-products')
+      }else{
+        M.toast({html: "result.error", classes:"#4caf50 red"})
+      }
+    })
   }
-// debugger
+
   return (
     <div> 
       <button
@@ -135,7 +136,7 @@ export const EditProduct = (props) => {
       </div>
        { productShow && <div className="box">
         <div className="formbox1">
-          <form onSubmit={(e)=>addProducts(e)}>
+          <form onSubmit={(e)=>editProduct(e)}>
             <h5>Add Product</h5>
             <label>
               Choose Category:
