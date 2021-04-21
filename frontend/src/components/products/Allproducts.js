@@ -42,8 +42,7 @@ export const Allproducts = () => {
   const handleEdit = (e, pro, cat) =>{
     history.push({ 
       pathname: '/edit-products',
-      state: pro,
-      cat: cat
+      state: {pro,cat},
      });
 
   }

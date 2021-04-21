@@ -14,7 +14,8 @@ export const EditProduct = (props) => {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, true);
   });
-  const data = props?.history?.location?.state
+  const data = props?.history?.location?.state?.pro
+  const cat = props?.history?.location?.state?.cat
 
   const [categoryId, setCategoryId] =useState(data.categoryId)
   const [title, setTitle] =useState(data.title)
@@ -116,7 +117,7 @@ export const EditProduct = (props) => {
       }
     })
   }
-
+  console.log(cat)
   return (
     <div> 
       <button
@@ -141,10 +142,8 @@ export const EditProduct = (props) => {
             <label>
               Choose Category:
             </label>
-            <select value={categoryId} onChange={(e)=>setCategoryId(e.target.value)}>
-              {options?.map(res=>{return (
-                <option value={res._id}>{res.name}</option>
-              )})}
+            <select id="cars">
+              <option value={cat.name} selected>{cat.name}</option>
             </select>
             <p>Title:</p>
             <input
