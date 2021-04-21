@@ -1,0 +1,12 @@
+.menucategory {
+  color: black;
+  font-weight: bold;
+}
+.menubody {
+  color: black;
+}
+.menuheading {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+}

@@ -28,13 +28,13 @@ const Menu = () => {
   return (
     <div>
       <Navbar/>
-      <h3>Menu</h3>
+      <h3 className="menuheading">Menu</h3>
       <ul className="collapsible">{
         category?.map((cat)=>{
           return(
             <li>
-              <div className="collapsible-header"><i className="material-icons">chevron_right</i> {cat.name}</div>
-              <div className="collapsible-body">
+              <div className="collapsible-header menucategory"><i className="material-icons">chevron_right</i> {cat.name}</div>
+              <div className="collapsible-body menubody">
                 <div className="menucontent">
                   <div>
                     {products?.map((pro)=>{
