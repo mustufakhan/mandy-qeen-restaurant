@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <div className="main">
       <div className="navbar">
-        <h1>CHAO THAI</h1>
+        <h1>Mandyqueen Thai Restaurant</h1>
         <div className="links">
           <ul>
             <li>

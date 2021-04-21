@@ -8,8 +8,8 @@ import Footer from '../footer/Footer'
 import Navbar from '../navbar/Navbar'
 
 const Home = (props) => {
-	useEffect(() => {
-		window.scroll(0, props.val)
+  useEffect(() => {
+    window.scroll(0, props.val)
   },[props.val]);
 
   return (
